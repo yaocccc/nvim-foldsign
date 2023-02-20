@@ -2,6 +2,8 @@
 
 Display folding info on sign column
 
+![avatar](screenshot.png)
+
 ## Usage
 
 ```plaintext
