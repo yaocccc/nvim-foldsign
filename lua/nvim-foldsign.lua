@@ -8,10 +8,7 @@ local M = {
 
 function M.setsign(line, sign)
     vim.api.nvim_buf_set_extmark(
-        0,
-        M.ns,
-        line,
-        0,
+        0, M.ns, line, 0,
         { virt_text_win_col = -2 - M.numberwidth, virt_text = { { sign, 'FoldColumn' } } }
     )
 end
@@ -46,8 +43,8 @@ end
 
 function M.setup(opt)
     M.ns = vim.api.nvim_create_namespace('foldsign')
-    if opt.foldsigns ~= nil then M.foldsigns = opt.foldsigns end
-    vim.cmd('au VimEnter,WinEnter,BufWinEnter,ModeChanged,CursorMoved,CursorHold * lua require("foldsign").foldsign()')
+    if opt and opt.foldsigns then M.foldsigns = opt.foldsigns end
+    vim.cmd('au VimEnter,WinEnter,BufWinEnter,ModeChanged,CursorMoved,CursorHold * lua require("nvim-foldsign").foldsign()')
 end
 
 return M

@@ -2,21 +2,23 @@
 
 Display folding info on sign column
 
-## Install
+## Usage
 
 ```plaintext
   -- Packer demo
-    use { 'yaocccc/nvim-foldsign', event = 'CursorHold', config = function()
-        local foldsign = require('nvim-foldsign')
-        foldsign.setup({
-            foldsigns = {
-                closed = '+',
-                opened = '-',
-                folding = { '│', '┃' },
-            }
-        })
-    end
-    }
+  use { 'yaocccc/nvim-foldsign', event = 'CursorHold', config = 'require("nvim-foldsign").setup()' }
+```
+
+## Config
+
+```plaintext
+    require('nvim-foldsign').setup({
+        foldsigns = {
+            closed = '+',
+            opened = '-',
+            folding = { '│', '┃' },
+        }
+    })
 ```
 
 ## Highlight Group
