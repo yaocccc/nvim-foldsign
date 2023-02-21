@@ -1,5 +1,5 @@
 local M = {
-    offset = -2,
+    offset = -1,
     foldsigns = {
         closed = '+',
         opened = '-',

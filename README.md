@@ -15,7 +15,7 @@ Display folding info on sign column
 
 ```plaintext
     require('nvim-foldsign').setup({
-        offset = -2,
+        offset = -1,
         foldsigns = {
             closed = '+',
             opened = '-',
