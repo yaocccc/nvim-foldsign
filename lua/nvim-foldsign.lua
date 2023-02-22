@@ -1,5 +1,5 @@
 local M = {
-    offset = -1,
+    offset = -2,
     foldsigns = {
         closed = '+',
         opened = '-',
@@ -20,7 +20,7 @@ function M.foldsign()
     vim.api.nvim_buf_clear_namespace(0, M.ns, topline, botline)
 
     local numberwidth = #tostring(vim.fn.line('$'))
-    if numberwidth < vim.o.numberwidth then numberwidth = vim.o.numberwidth end
+    if numberwidth < vim.o.numberwidth - 1 then numberwidth = vim.o.numberwidth -1 end
     M.numberwidth = numberwidth
 
     local pre = 0
