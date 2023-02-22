@@ -13,13 +13,13 @@ Display folding info on sign column
 
 ## Config
 
-```plaintext
+```lua
     require('nvim-foldsign').setup({
-        offset = -1,
+        offset = -2,
         foldsigns = {
-            closed = '+',
-            opened = '-',
-            folding = { '│', '┃' },
+            open = '-',          -- mark the beginning of a fold
+            close = '+',         -- show a closed fold
+            seps = { '│', '┃' }, -- open fold middle marker
         }
     })
 ```

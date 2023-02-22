@@ -1,9 +1,9 @@
 local M = {
     offset = -2,
     foldsigns = {
-        closed = '+',
-        opened = '-',
-        folding = { '│', '┃' },
+        close = '+',
+        open = '-',
+        seps = { '│', '┃' },
     }
 }
 
@@ -30,11 +30,11 @@ function M.foldsign()
             local foldtext = ' '
             local foldclosed = vim.fn.foldclosed(i)
             if foldclosed > 0 and i == foldclosed then
-                foldtext = M.foldsigns.closed
+                foldtext = M.foldsigns.close
             elseif foldlevel > pre then
-                foldtext = M.foldsigns.opened
+                foldtext = M.foldsigns.open
             else
-                foldtext = M.foldsigns.folding[foldlevel] or M.foldsigns.folding[#M.foldsigns.folding]
+                foldtext = M.foldsigns.seps[foldlevel] or M.foldsigns.seps[#M.foldsigns.seps]
             end
             M.setsign(i - 1, foldtext)
         end
