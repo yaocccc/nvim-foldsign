@@ -15,7 +15,7 @@ function M.setsign(line, sign)
     )
 end
 
-function M.toggle_foldsigns()
+function M.toggle_foldsign()
     M.enabled = not M.enabled
     if M.enabled then
         M.foldsign()
