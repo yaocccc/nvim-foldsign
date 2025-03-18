@@ -4,7 +4,8 @@ local M = {
         close = '+',
         open = '-',
         seps = { '│', '┃' },
-    }
+    },
+    enabled = true
 }
 
 function M.setsign(line, sign)
@@ -14,7 +15,19 @@ function M.setsign(line, sign)
     )
 end
 
+function M.toggle_foldsign()
+    M.enabled = not M.enabled
+    if M.enabled then
+        M.foldsign()
+    else
+        vim.api.nvim_buf_clear_namespace(0, M.ns, 0, -1)
+    end
+end
+
 function M.foldsign()
+    if not M.enabled then
+        return
+    end
     local topline = vim.fn.line('w0') - 1
     local botline = vim.fn.line('w$')
     vim.api.nvim_buf_clear_namespace(0, M.ns, topline, botline)
@@ -46,6 +59,7 @@ function M.setup(opt)
     M.ns = vim.api.nvim_create_namespace('foldsign')
     if opt and opt.foldsigns then M.foldsigns = opt.foldsigns end
     if opt and opt.offset ~= nil then M.offset = opt.offset end
+    if opt and opt.enabled ~= nil then M.enabled = opt.enabled end
     vim.cmd('au VimEnter,WinEnter,BufWinEnter,ModeChanged,CursorMoved,CursorHold * lua require("nvim-foldsign").foldsign()')
 end
 
